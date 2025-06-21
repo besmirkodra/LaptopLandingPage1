@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Launch</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Google Analytics 4 – replace G-XXXXXXXXXX with your Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section class="hero" id="top">
+    <div class="container fade-in">
+      <h1>Introducing Our Next Big Thing</h1>
+      <p>Join us as we launch a game‑changing product that redefines what's possible.</p>
+
+      <!-- Live countdown -->
+      <div class="countdown" id="countdown">
+        <div><span id="days">00</span><small>Days</small></div>
+        <div><span id="hours">00</span><small>Hours</small></div>
+        <div><span id="minutes">00</span><small>Minutes</small></div>
+        <div><span id="seconds">00</span><small>Seconds</small></div>
+      </div>
+
+      <!-- Mailchimp signup: replace the action URL with your own “post” URL -->
+      <form class="signup-form" action="https://YOUR_DC.list-manage.com/subscribe/post?u=YOUR_U&amp;id=YOUR_ID" method="post" target="_blank" novalidate>
+        <input type="email" name="EMAIL" placeholder="Enter your email" required>
+        <button type="submit">Notify Me</button>
+      </form>
+
+      <a href="#video" class="scroll-link">Watch the demo ↓</a>
+    </div>
+  </section>
+
+  <!-- Product Image -->
+  <section class="product-image fade-in">
+  <div class="container">
+    <img src="https://images.pexels.com/photos/374074/pexels-photo-374074.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+     alt="Modern laptop workspace">
+
+  </div>
+</section>
+
+  <!-- Video Preview -->
+  <section class="video-section" id="video">
+    <div class="container fade-in">
+      <h2>See It in Action</h2>
+      <p>Here’s a quick walkthrough of the features you’ll soon have in your hands.</p>
+      <!-- YouTube embed; swap src with your video URL or use a <video> tag -->
+      <div class="video-wrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/KdB4v9ssdIY?si=2vwDHnePU_yIpeVK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <div class="container">
+      <h2 class="fade-in">Why You'll Love It</h2>
+      <p class="subtitle fade-in">Cutting‑edge features designed to make your life easier and more productive.</p>
+
+      <div class="feature-grid">
+        <div class="feature-box fade-in"><h3>⚡ Fast Performance</h3><p>Blazing speed so you can get things done faster than ever.</p></div>
+        <div class="feature-box fade-in"><h3>🔒 Secure by Design</h3><p>Top‑level security built right in to keep your data safe.</p></div>
+        <div class="feature-box fade-in"><h3>💡 Smart Features</h3><p>AI‑powered tools that help you work smarter, not harder.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Your Company Name. All rights reserved. | <a href="#top" class="scroll-link">Back to top ↑</a></p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    /* ========== Countdown ========== */
+    const countdown = () => {
+      const launchDate = new Date("2025-07-01T00:00:00").getTime();  // CHANGE to your date
+      const now        = Date.now();
+      const diff       = Math.max(0, launchDate - now);
+
+      const days    = Math.floor(diff / 864e5);
+      const hours   = Math.floor((diff % 864e5) / 36e5);
+      const minutes = Math.floor((diff % 36e5) / 6e4);
+      const seconds = Math.floor((diff % 6e4) / 1e3);
+
+      document.getElementById("days").textContent    = String(days   ).padStart(2, "0");
+      document.getElementById("hours").textContent   = String(hours  ).padStart(2, "0");
+      document.getElementById("minutes").textContent = String(minutes).padStart(2, "0");
+      document.getElementById("seconds").textContent = String(seconds).padStart(2, "0");
+    };
+    countdown();
+    setInterval(countdown, 1000);
+
+    /* ========== Smooth Scroll for links with .scroll-link ========== */
+    document.querySelectorAll('.scroll-link').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(link.getAttribute('href'))
+                .scrollIntoView({behavior: 'smooth'});
+      });
+    });
+
+    /* ========== Fade‑in on scroll ========== */
+    const faders = document.querySelectorAll('.fade-in');
+    const ioOpts = {threshold: 0.25};
+    const io     = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, ioOpts);
+    faders.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
